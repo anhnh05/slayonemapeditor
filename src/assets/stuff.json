@@ -1,0 +1,27 @@
+{
+	"waypoint": {"x": 19, "y": 27, "w": 19, "h": 14},
+	"spawningPoint": {"x": 60, "y": 20, "w": 18, "h": 21},
+	"spawningPointRed": {"x": 81, "y": 20, "w": 18, "h": 21},
+	"spawningPointBlue": {"x": 39, "y": 20, "w": 18, "h": 21},
+	
+	"redFlag": {"x": 178, "y": 29, "w": 13, "h": 23},
+	"blueFlag": {"x": 192, "y": 29, "w": 13, "h": 23},
+	
+	"medikit": {"x": 268, "y": 59, "w": 14, "h": 13},
+	"armor": {"x": 284, "y": 75, "w": 14, "h": 17},
+	
+	"weapon_gl": {"x": 312, "y": 18, "w": 26, "h": 15},
+	"weapon_flame": {"x": 306, "y": 36, "w": 30, "h": 18},
+	"weapon_mg": {"x": 310, "y": 0, "w": 28, "h": 14},
+	"weapon_rl": {"x": 309, "y": 57, "w": 26, "h": 17},
+	"weapon_homing": {"x": 342, "y": 55, "w": 26, "h": 17},
+	"weapon_homing_2": {"x": 324, "y": 77, "w": 26, "h": 17},
+	"weapon_laser_r": {"x": 340, "y": 20, "w": 29, "h": 18},
+	"weapon_sniper": {"x": 324, "y": 98, "w": 36, "h": 13},
+	"weapon_shotgun": {"x": 344, "y": 40, "w": 29, "h": 12},
+	"weapon_rapid_rl": {"x": 375, "y": 40, "w": 27, "h": 15},
+	"weapon_rapid_gl": {"x": 370, "y": 58, "w": 30, "h": 20},
+	
+	"weapon_asmd": {"x": 397, "y": 139, "w": 40, "h": 14},
+	"weapon_heal": {"x": 400, "y": 121, "w": 32, "h": 15}
+}
