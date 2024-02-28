@@ -75,7 +75,7 @@ class Map {
         redFlags = {},
         blueFlags = {},
         pickups = {},
-
+        //tile types
     ) {
         this.name = name;
         this.description = description;
@@ -109,9 +109,9 @@ class Map {
             tileObject[param] = tile.params[param];
         }
         this[tile.category][posKey].push(tileObject);
-    }
+    }   
 }
 
 module.exports = {
-    Tile, Sprite
+    Tile, Sprite, Map
 }

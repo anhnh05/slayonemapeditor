@@ -20,6 +20,7 @@ const Assets = {
         if(asset[assetID].h) {tile.height = asset[assetID].h} else {tile.height = 1};
         if(asset[assetID].ground) {tile.isGround = !0} else {tile.isGround = !1};
         tile.sprite = new Sprite(image, asset[assetID].img.x, asset[assetID].img.y, asset[assetID].img.w, asset[assetID].img.h);
+        
     }
 }
 
