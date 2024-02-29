@@ -1,8 +1,10 @@
 const {Tile, SlayMap} = require("./classes");
 
 const Editor = {
+    //current map in the editor
     currentMap: new SlayMap(),
-    export: (filename = currentMap.name + ".json") => {
+    //export map as a slay.one map file
+    save: (filename = currentMap.name + ".json") => {
         const mapJSON = {
             name: currentMap.name,
             description: currentMap.description,
@@ -33,4 +35,8 @@ const Editor = {
     },
     load: () => {}
 
+}
+
+module.exports = {
+    Editor
 }
