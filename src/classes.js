@@ -57,7 +57,7 @@ class Conveyor extends Tile {
     }
 }
 
-class Map {
+class SlayMap {
     constructor(
         name = "Untitled",
         description = "",
@@ -113,5 +113,5 @@ class Map {
 }
 
 module.exports = {
-    Tile, Sprite, Map
+    Tile, Sprite, SlayMap
 }
