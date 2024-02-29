@@ -1,8 +1,12 @@
 const {Tile, SlayMap} = require("./classes");
 
 const Editor = {
+    editableFields: ['name', 'description', 'maxPlayers', 'invisible', 'closed', 'type'],
+    editableLabels: {name: 'Name', description: 'Description', maxPlayers: 'Max Players', invisible: 'Hidden', closed: 'Closed', type: 'Default Gamemode'},
+
     //current map in the editor
     currentMap: new SlayMap(),
+
     //export map as a slay.one map file
     save: (filename = currentMap.name + ".json") => {
         const mapJSON = {
@@ -12,8 +16,8 @@ const Editor = {
             invisible: currentMap.invisible,
             closed: currentMap.closed,
             type: currentMap.type,
-            width: currentMap.width,
-            height: currentMap.height
+            x: currentMap.x,
+            y: currentMap.y
         };        
         for (let category in Tile.categories) {
             mapJSON[Tile.categories[category]] = [];
@@ -33,8 +37,15 @@ const Editor = {
         dlQueue.click();
         document.body.removeChild(dlQueue);
     },
-    load: () => {}
 
+    //load map from a slay.one map file
+    load: () => {},
+    
+    //resize the current map
+    resize: (width, height) => {
+        currentMap.x = width;
+        currentMap.y = height;
+    }
 }
 
 module.exports = {

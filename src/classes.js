@@ -83,7 +83,7 @@ class SlayMap {
         this.invisible = hidden;
         this.closed = closed;
         this.type = type;
-        this.width = width; this.height = height;
+        this.x = width; this.y = height;
         this.tiles = tiles;
         this.groundTiles = groundTiles;
         this.waypoints = waypoints;
