@@ -8,7 +8,7 @@ const Editor = {
     currentMap: new SlayMap(),
 
     //export map as a slay.one map file
-    save: (filename = currentMap.name + ".json") => {
+    saveMap: (filename = currentMap.name + ".json") => {
         const mapJSON = {
             name: currentMap.name,
             description: currentMap.description,
@@ -29,18 +29,50 @@ const Editor = {
             }
         }
         const mapString = JSON.stringify(mapJSON);
-        const dlQueue = document.createElement('a');
+        dlQueue = document.createElement('a');
         dlQueue.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(mapString));
         dlQueue.setAttribute('download', filename);
         dlQueue.style.display = 'none';
         document.body.appendChild(dlQueue);
         dlQueue.click();
         document.body.removeChild(dlQueue);
+        delete dlQueue;
     },
 
     //load map from a slay.one map file
-    load: () => {},
-    
+    loadMap: () => {
+        const data = {}
+        inputHandler = document.createElement('input');
+        inputHandler.type = 'file';
+        inputHandler.accept = "file/json";
+        fileReader = new FileReader();
+        inputHandler.addEventListener(
+            "change", 
+            () => {
+                data.file = inputHandler.files[0];  
+                fileReader.readAsText(data.file);           
+                delete inputHandler;
+            }, 
+            false
+        );
+
+        fileReader.addEventListener("load", () => {
+            data.string = fileReader.result;
+            data.object = JSON.parse(data.string);  
+            delete fileReader;
+        })
+
+        inputHandler.click(); //prompts user to select a json file
+         
+        //now the next part: reading the data
+        const rawMapJSON = data.object;
+        
+        
+        
+        
+        
+    },
+
     //resize the current map
     resize: (width, height) => {
         currentMap.x = width;

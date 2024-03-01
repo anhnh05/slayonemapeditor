@@ -16,7 +16,8 @@ class Tile {
         localName = "unknown", //tile's local display name in UI
         category = "tiles", //tile category
         width = 1, height = 1, //tile size
-        isGround = false,
+        isNotFull = false,
+        ground = false,
         sprite = null,
     ) {
         this.id = id;
@@ -24,7 +25,8 @@ class Tile {
         this.category = category;
         this.width = width; this.height = height;
         this.pathing = pathing; 
-        this.isGround = isGround;
+        this.ground = ground;
+        this.isNotFull = isNotFull;
         this.sprite = sprite;
         this.params = {};
     }
@@ -37,7 +39,7 @@ class Teleporter extends Tile {
         sprite = null,
         channel = 1,
     ) {
-        super(id, localName, "tiles", width, height, false, sprite);
+        super(id, localName, "tiles", width, height, true, true, sprite);
         this.params.channel = channel;
     }
 }
@@ -51,7 +53,7 @@ class Conveyor extends Tile {
         shiftX = 1,
         shiftY = 0,
     ) {
-        super(id, localName, "tiles", width, height, false, sprite);
+        super(id, localName, "tiles", width, height, false, true, sprite);
         this.params.shiftX = shiftX;
         this.params.shiftY = shiftY;
     }
@@ -98,7 +100,7 @@ class SlayMap {
     addTile(tile, x, y) {
         const posKey = x + "&" + y;
         if (!this[tile.category][posKey]) {
-            this[tile.category][posKey] = []
+            this[tile.category][posKey] = {}
         }
         const tileObject = {};
         tileObject.id = tile.id;
@@ -108,7 +110,7 @@ class SlayMap {
         for (let param in tile.params) {
             tileObject[param] = tile.params[param];
         }
-        this[tile.category][posKey].push(tileObject);
+        this[tile.category][posKey][tile.id] = tileObject;
     }   
 }
 

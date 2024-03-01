@@ -18,7 +18,8 @@ const Assets = {
         if(asset[assetID].name) {tile.localName = asset[assetID].name} else {tile.localName = assetID};
         if(asset[assetID].w) {tile.width = asset[assetID].w} else {tile.width = 1};
         if(asset[assetID].h) {tile.height = asset[assetID].h} else {tile.height = 1};
-        if(asset[assetID].ground) {tile.isGround = !0} else {tile.isGround = !1};
+        if(asset[assetID].ground) {tile.ground = !0} else {tile.ground = !1};
+        if(asset[assetID].isNotFull) {tile.isNotFull = !0} else {tile.isNotFull = !1};
         tile.sprite = new Sprite(image, asset[assetID].img.x, asset[assetID].img.y, asset[assetID].img.w, asset[assetID].img.h);
         
     }
