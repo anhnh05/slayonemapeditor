@@ -28,7 +28,7 @@ class Tile {
         this.ground = ground;
         this.isNotFull = isNotFull;
         this.sprite = sprite;
-        this.params = {};
+        this.params = {}; //extra editable parameters / fields
     }
 }
 class Teleporter extends Tile {
@@ -60,6 +60,7 @@ class Conveyor extends Tile {
 }
 
 class SlayMap {
+    static editableFields = ['name', 'description', 'maxPlayers', 'invisible', 'closed', 'type'];
     constructor(
         name = "Untitled",
         description = "",

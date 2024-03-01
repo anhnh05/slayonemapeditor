@@ -1,7 +1,6 @@
 const {Tile, SlayMap} = require("./classes");
 
 const Editor = {
-    editableFields: ['name', 'description', 'maxPlayers', 'invisible', 'closed', 'type'],
     editableLabels: {name: 'Name', description: 'Description', maxPlayers: 'Max Players', invisible: 'Hidden', closed: 'Closed', type: 'Default Gamemode'},
 
     //current map in the editor
@@ -64,9 +63,18 @@ const Editor = {
 
         inputHandler.click(); //prompts user to select a json file
          
-        //now the next part: reading the data
+        //now onto the next part: reading the data
         const rawMapJSON = data.object;
-        
+
+        const mapJSON = new SlayMap(
+            rawMapJSON.name, 
+            rawMapJSON.description, 
+            rawMapJSON.maxPlayers, 
+            rawMapJSON.invisible, 
+            rawMapJSON.closed, 
+            rawMapJSON.type, 
+            rawMapJSON.width, rawMapJSON.height
+        );
         
         
         
