@@ -66,7 +66,7 @@ class SlayMap {
         description = "",
         maxPlayers = 16,
         hidden = false, //whether this map is not shown up in the in-game map list
-        closed = false, //whether this map is not in in-game map rotation
+        closed = false, //(deprecated) whether to hide units on the map editor
         type = 0, //default gamemode of this map
         width = 32, height = 32, //map size
         tiles = {},
@@ -98,7 +98,7 @@ class SlayMap {
         this.ammo = pickups;
     }
 
-    addTile(tile, x, y) {
+    addTile(tile, x, y, params = null) {
         const posKey = x + "&" + y;
         if (!this[tile.category][posKey]) {
             this[tile.category][posKey] = {}
@@ -108,9 +108,17 @@ class SlayMap {
         tileObject.x = tile.x;
         tileObject.y = tile.y;
 
-        for (let param in tile.params) {
-            tileObject[param] = tile.params[param];
+        if (params instanceof Object) {
+            for (let param in params) {
+                tileObject[param] = params[param];
+            }
+        } else {
+            for (let param in tile.params) {
+                tileObject[param] = tile.params[param];
+            }
         }
+
+        
         this[tile.category][posKey][tile.id] = tileObject;
     }   
 }

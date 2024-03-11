@@ -76,6 +76,10 @@ const Editor = {
             rawMapJSON.width, rawMapJSON.height
         );
         
+        const noBorder = rawMapJSON.noBorder;
+
+        for (let category in Tile.categories) {
+        }
         
         
         
