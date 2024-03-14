@@ -13,6 +13,7 @@ const Editor = {
             description: currentMap.description,
             maxPlayers: currentMap.maxPlayers,
             invisible: currentMap.invisible,
+            noBorder: false,
             closed: currentMap.closed,
             type: currentMap.type,
             x: currentMap.x,
@@ -76,8 +77,6 @@ const Editor = {
             rawMapJSON.width, rawMapJSON.height
         );
         
-        const noBorder = rawMapJSON.noBorder;
-
         for (let category in Tile.categories) {
         }
         

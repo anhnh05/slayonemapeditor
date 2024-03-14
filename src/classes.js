@@ -9,7 +9,7 @@ class Sprite {
 }
 
 class Tile {
-    static categories = ["tiles", "groundTiles", "waypoints", "spawnPoints", "ammo", "spawningPointsRed", "spawningPointsBlue", "redFlags", "blueFlags"]
+    static categories = ["tiles", "groundTiles", "noGridTiles", "waypoints", "spawnPoints", "ammo", "spawningPointsRed", "spawningPointsBlue", "redFlags", "blueFlags"]
     
     constructor(
         id = 0, //numeric ID
@@ -71,6 +71,7 @@ class SlayMap {
         width = 32, height = 32, //map size
         tiles = {},
         groundTiles = {},
+        noGridTiles = {},
         waypoints = {},
         spawnPoints = {},
         spawnRed = {},
@@ -89,6 +90,7 @@ class SlayMap {
         this.x = width; this.y = height;
         this.tiles = tiles;
         this.groundTiles = groundTiles;
+        this.noGridTiles = noGridTiles;
         this.waypoints = waypoints;
         this.spawnPoints = spawnPoints;
         this.spawningPointsBlue = spawnBlue;
