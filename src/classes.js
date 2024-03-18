@@ -100,6 +100,10 @@ class SlayMap {
         this.ammo = pickups;
     }
 
+    addNoGrid(tile, x, y) {
+        
+    }
+
     addTile(tile, x, y, params = null) {
         const posKey = x + "&" + y;
         if (!this[tile.category][posKey]) {
