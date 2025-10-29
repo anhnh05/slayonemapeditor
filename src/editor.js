@@ -1,7 +1,5 @@
-const {Tile, SlayMap} = require("./classes");
-
 const Editor = {
-    editableLabels: {name: 'Name', description: 'Description', maxPlayers: 'Max Players', invisible: 'Hidden', closed: 'Closed', type: 'Default Gamemode'},
+    labels: {name: 'Name', description: 'Description', maxPlayers: 'Max Players', invisible: 'Hidden', type: 'Default Gamemode'},
 
     //current map in the editor
     currentMap: new SlayMap(),
@@ -21,37 +19,36 @@ const Editor = {
         };        
         for (let category in Tile.categories) {
             mapJSON[Tile.categories[category]] = [];
-            for (let pos in currentMap[Tile.categories[category]]) {
-                let tileGroup = currentMap[Tile.categories[category]][pos];
-                for (let tile in tileGroup) {
-                    mapJSON[Tile.categories[category]].push(tileGroup[tile])
-                }
+            for (let tileID in currentMap[Tile.categories[category]]) {
+                let tile = currentMap[Tile.categories[category]][tileID];
+
+                mapJSON[Tile.categories[category]].push(tile)
+
             }
         }
         const mapString = JSON.stringify(mapJSON);
-        dlQueue = document.createElement('a');
+        let dlQueue = document.createElement('a');
         dlQueue.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(mapString));
         dlQueue.setAttribute('download', filename);
         dlQueue.style.display = 'none';
         document.body.appendChild(dlQueue);
         dlQueue.click();
         document.body.removeChild(dlQueue);
-        delete dlQueue;
+        dlQueue = null;
     },
 
-    //load map from a slay.one map file
+    // load map from a slay.one map file
     loadMap: () => {
         const data = {}
-        inputHandler = document.createElement('input');
+        let inputHandler = document.createElement('input');
         inputHandler.type = 'file';
         inputHandler.accept = "file/json";
-        fileReader = new FileReader();
+        let fileReader = new FileReader();
         inputHandler.addEventListener(
             "change", 
             () => {
                 data.file = inputHandler.files[0];  
                 fileReader.readAsText(data.file);           
-                delete inputHandler;
             }, 
             false
         );
@@ -59,12 +56,11 @@ const Editor = {
         fileReader.addEventListener("load", () => {
             data.string = fileReader.result;
             data.object = JSON.parse(data.string);  
-            delete fileReader;
         })
 
-        inputHandler.click(); //prompts user to select a json file
+        inputHandler.click(); // prompts user to select a json file
          
-        //now onto the next part: reading the data
+        // reading the data
         const rawMapJSON = data.object;
 
         const mapJSON = new SlayMap(
@@ -80,6 +76,10 @@ const Editor = {
         for (let category in Tile.categories) {
         }
         
+        // final cleanup 
+        document.body.removeChild(inputHandler);
+        inputHandler = null;
+        fileReader = null;
         
         
     },
@@ -89,8 +89,4 @@ const Editor = {
         currentMap.x = width;
         currentMap.y = height;
     }
-}
-
-module.exports = {
-    Editor
 }
